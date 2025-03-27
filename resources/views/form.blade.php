@@ -3,66 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Project Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <title>Document</title>
 </head>
-<body>
-    
+<body class="bg-gray-100 p-6">
+    <form action="{{ url('/userforms') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-md mt-10">
+        <h2 class="text-xl font-bold mb-6"> USER DETAILS</h2>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block font-semibold">Name</label>
+                <input type="text" placeholder="Enter Contract Number" class="w-full border p-2 rounded "  name="name">
+            </div>
+            <div>
+                <label class="block font-semibold">Email</label>
+                <input type="email" placeholder="Enter Contract Number" class="w-full border p-2 rounded "  name="email">
+            </div>
 
+            <div>
+                <label class="block font-semibold">Contact Number</label>
+                <input type="text" placeholder="Enter Contact Number" class="w-full border p-2 rounded "  name="contactno">
+            </div>
+            
+            <div>
+                <label class="block font-semibold">Adhar No</label>
+                <input type="text" placeholder="Enter Tender No" class="w-full border p-2 rounded "  name="adhar">
+            </div>
+            
+            <div>
+                <label class="block font-semibold">Project Name</label>
+                <input type="text" placeholder="Enter Project Name" class="w-full border p-2 rounded "  name="project">
+            </div>
+            <div>
+                <label class="block font-semibold">State</label>
+                <select class="w-full border p-2 rounded" name="state">
+                    <option value="">-- Select --</option>
+                    <option value="Tamil">-- Tamil Nadu --</option>
+                    <option value="Kerala">-- Kerala --</option>
+                    <option value="Delhi">-- Delhi --</option>
+                    <option value="Andhraprathes"> -- Andhraprathes --</option>
 
-    <form>
-        <div class="grid mb-6 md:grid-cols-2 ml-40" >
-            <div  >
-                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-                <input type="text" id="first_name" style="width: 444px;"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                </select>
             </div>
-            <div  >
-                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                <input type="text" id="last_name"  style="width: 444px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" " required />
+            
+            <div>
+                <label class="block font-semibold">Language</label>
+                <select class="w-full border p-2 rounded" name="language">
+                    <option>-- Select --</option>
+                    <option value="tamil">-- Tamil --</option>
+                    <option value="English">-- English --</option>
+                    <option value="Hindi">-- Hindi --</option>
+                    <option  value="Malayalam">-- Malayalam --</option>
+
+                </select>
             </div>
-            <div >
-                <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company</label>
-                <input type="text" id="company" style="width: 444px;"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="   " required />
-            </div>  
-            <div >
-                <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
-                <input type="tel" id="phone"  style="width: 444px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+            <div>
+                <label class="block font-semibold">pincode</label>
+                <input type="text" placeholder="Enter Project Duration" class="w-full border p-2 rounded " name="pincode">
             </div>
-            <div >
-                <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website URL</label>
-                <input type="url" id="website"  style="width: 444px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="flowbite.com" required />
+            
+            <div>
+                <label class="block font-semibold">Adderss</label>
+                <input type="text" placeholder="Enter Client Name" class="w-full border p-2 rounded" name="address">
             </div>
-            <div >
-                <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unique visitors (per month)</label>
-                <input type="number" id="visitors" style="width: 444px;"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+            <div>
+                <label class="block font-semibold">Pancard </label>
+                <input type="text" placeholder="Enter Client ID" class="w-full border p-2 rounded" name="pancart">
             </div>
         </div>
-        <div class="mb-6 ml-40">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
-            <input type="email" id="email" style="width: 444px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
-        </div> 
-        <div class="mb-6 ml-40">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input type="password" id="password" style="width: 444px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required />
-        </div> 
-        <div class="mb-6 ml-40">
-            <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-            <input type="password" id="confirm_password" style="width: 444px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required />
-        </div> 
-        <div class="flex items-start mb-6 ml-40">
-            <div class="flex items-center h-5">
-            <input id="remember" type="checkbox" value=""class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
-            </div>
-            <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
-        </div>
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-    </form>
+
+        <h3 class="text-lg font-bold mt-6">More Details</h3>
+<table class="w-full border mt-4">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="p-2">Image</th>
+            <th class="p-2">Resume</th>
+            <th class="p-2">Gender</th>
+            <th class="p-2">Date of Brth</th>
+            <th class="p-2">Age </th>
+            <th class="p-2">Action</th>
+        </tr>
+    </thead>
+    <tbody id="drawingDetails">
+        <tr>
+            <td class="p-2"><input name="image[]" type="file" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="resume[]" type="file" placeholder="Enter Diagram" class="w-full border p-2 rounded"></td>
+             <td class="p-2"><input name="gender[]" type="text" placeholder="Enter gender" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="data_of_brth[]" type="date" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="age[]" type="text" placeholder=" Age " class="w-full border p-2 rounded"></td>
+            <td class="p-2"><button onclick="removeRow(this)" class="bg-red-500 text-white px-3 py-1 rounded">Remove</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<form id="myForm" onsubmit="handleSubmit(event)">
+    <button type="button" onclick="addRow()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">+ Add More</button>
+
+    <table id="drawingDetails" class="mt-4 w-full">
+       
+    </table>
+
+    <div class="flex justify-end gap-4 mt-6">
+        <button type="button" onclick="resetForm()" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Add</button>
+    </div>
+</form>
+
+<script>
     
-  
-      
+    function addRow() {
+        let tableBody = document.getElementById("drawingDetails");
+        let newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td class="p-2"><input name="image[]" type="file" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="resume[]" type="file" placeholder="Enter Diagram" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="gender[]" type="text" placeholder="Enter gender" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="data_of_brth[]" type="date" class="w-full border p-2 rounded"></td>
+            <td class="p-2"><input name="age[]" type="text" placeholder=" Age " class="w-full border p-2 rounded"></td>
+            <td class="p-2"><button onclick="removeRow(this)" class="bg-red-500 text-white px-3 py-1 rounded">Remove</button></td>
+        `;
+        tableBody.appendChild(newRow);
+    }
+
+    function removeRow(button) {
+        button.closest('tr').remove();
+    }
+
+    function resetForm() {
+        document.getElementById("myForm").reset();
+        document.getElementById("drawingDetails").innerHTML = ''; 
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();  
+        const formData = new FormData(document.getElementById("myForm"));
+
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+        const images = formData.getAll('image');
+        console.log('Images:', images);
+
+    }
+</script>
+
 </body>
 </html>
