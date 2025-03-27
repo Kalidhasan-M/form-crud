@@ -82,7 +82,6 @@
             <th class="p-2">Gender</th>
             <th class="p-2">Date of Brth</th>
             <th class="p-2">Age </th>
-            <th class="p-2">Action</th>
         </tr>
     </thead>
     <tbody id="drawingDetails">

@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('contactno'); // Change from integer to string
+            $table->string('contactno');
             $table->string('adhar')->unique();
             $table->string('state');
             $table->string('project');
             $table->string('language');
-            $table->string('pincode'); // Change from integer to string
+            $table->string('pincode'); 
             $table->string('address');
             $table->string('pancart')->unique();
-            $table->string('image')->nullable(); // Change from binary to string
-            $table->string('resume')->nullable(); // Change from binary to string
+            $table->string('image')->nullable();
+            $table->string('resume')->nullable(); 
             $table->string('gender');
-            $table->string('data_of_brth'); // Change from integer to date
+            $table->string('data_of_brth'); 
             $table->string('age');
             $table->timestamps();
         });

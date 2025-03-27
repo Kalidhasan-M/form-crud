@@ -35,40 +35,37 @@
                     <tbody>
                         @foreach ($userdata as $user)
                             <tr class="border">
-                                <td class="border px-4 py-2">{{ $user->name }}</td>
-                                <td class="border px-4 py-2">{{ $user->email }}</td>
-                                <td class="border px-4 py-2">{{ $user->contactno }}</td>
-                                <td class="border px-4 py-2">{{ $user->adhar }}</td>
-                                <td class="border px-4 py-2">{{ $user->state }}</td>
-                                <td class="border px-4 py-2">{{ $user->language }}</td>
-                                <td class="border px-4 py-2">{{ $user->pincode }}</td>
-                                <td class="border px-4 py-2">{{ $user->pancart }}</td>
-                                <td class="border px-4 py-2">{{ $user->address }}</td>
-    
-                                <!-- Image -->
-                                <td class="border px-4 py-2">
+                                
+                      <td class="border px-4 py-2">{{ $user->name }}</td>
+                    <td class="border px-4 py-2">{{ $user->email }}</td>
+                    <td class="border px-4 py-2">{{ $user->contactno }}</td>
+                        <td class="border px-4 py-2">{{ $user->adhar }}</td>
+                        <td class="border px-4 py-2">{{ $user->state }}</td>
+                        <td class="border px-4 py-2">{{ $user->language }}</td>
+                     <td class="border px-4 py-2">{{ $user->pincode }}</td>
+                     <td class="border px-4 py-2">{{ $user->pancart }}</td>
+                    <td class="border px-4 py-2">{{ $user->address }}</td>
+                    <td class="border px-4 py-2">
                                     @foreach (json_decode($user->image) as $key => $value)
                                         <img src="{{ asset('storage/' . $value) }}" alt="User Image" class="w-12 h-12 object-cover">
                                     @endforeach
                                 </td>
     
-                                <!-- Resume -->
                                 <td class="border px-4 py-2">
                                     @foreach (json_decode($user->resume) as $key => $value)
                                         <a href="{{ asset('storage/' . $value) }}" target="_blank" class="text-blue-500 underline">View Resume</a>
                                     @endforeach
                                 </td>
+            
+                                        <td class="border px-4 py-2">{{ json_decode($user->gender)[0] }}</td>
+                                        <td class="border px-4 py-2">{{ json_decode($user->data_of_brth)[0] }}</td>
+                                        <td class="border px-4 py-2">{{ json_decode($user->age)[0] }}</td>
     
-                                <td class="border px-4 py-2">{{ json_decode($user->gender)[0] }}</td>
-                                <td class="border px-4 py-2">{{ json_decode($user->data_of_brth)[0] }}</td>
-                                <td class="border px-4 py-2">{{ json_decode($user->age)[0] }}</td>
-    
-                                <!-- Actions -->
                                 <td class="border px-4 py-2 flex space-x-2">
                                     <a href="{{ url('/edit-form', $user->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded">Edit</a>
-                                    <form action="{{ route('userforms.destroy', $user->id) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        @method('DELETE')
+                                  <form action="{{ route('userforms.destroy', $user->id) }}" method="POST" class="inline-block">
+                             @csrf
+                                     @method('DELETE')
                                         <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
                                     </form>
                                 </td>

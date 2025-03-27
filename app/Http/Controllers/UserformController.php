@@ -28,7 +28,6 @@ class UserformController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:userforms,email',
@@ -75,14 +74,13 @@ class UserformController extends Controller
             'pincode' => $validatedData['pincode'],
             'address' => $validatedData['address'],
             'pancart' => $validatedData['pancart'],
-            'image' => json_encode($imagePaths),  // Store multiple image paths as a JSON string
-            'resume' => json_encode($resumePaths),  // Store multiple resume paths as a JSON string
-            'gender' => json_encode($validatedData['gender']),  // Store gender as a JSON string
-            'data_of_brth' => json_encode($validatedData['data_of_brth']),  // Store date of birth as a JSON string
-            'age' => json_encode($validatedData['age']),  // Store age as a JSON string
+            'image' => json_encode($imagePaths),  
+            'resume' => json_encode($resumePaths),  
+            'gender' => json_encode($validatedData['gender']),  
+            'data_of_brth' => json_encode($validatedData['data_of_brth']), 
+            'age' => json_encode($validatedData['age']),  
         ]);
 
-        // Redirect back with a success message
         return redirect()->route('dashboard')->with('success', 'User registered successfully.');
     }
 
