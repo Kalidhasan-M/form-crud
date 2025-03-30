@@ -28,15 +28,15 @@
                 <input type="text" placeholder="Enter Contact Number" class="w-full border p-2 rounded " value="{{ $user->contactno }}"  name="contactno">
             </div>
             
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">Adhar No</label>
                 <input type="text" placeholder="Enter Tender No" class="w-full border p-2 rounded " value="{{ $user->adhar }}"  name="adhar">
-            </div>
+            </div> --}}
             
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">Project Name</label>
                 <input type="text" placeholder="Enter Project Name" class="w-full border p-2 rounded " value="{{ $user->project }}"  name="project">
-            </div>
+            </div> --}}
             <div>
                 <label class="block font-semibold">State</label>
                 <select name="state" class="w-full border p-2 rounded">
@@ -49,7 +49,7 @@
             </div>
             
             <div>
-                <label class="block font-semibold">Current Status</label>
+                <label class="block font-semibold">courses</label>
                 <select name="language" class="w-full border p-2 rounded">
                         <option value="">-- Select --</option>
                         <option value="Tamil" {{ $user->language == 'Tamil' ? 'selected' : '' }}>Tamil</option>
@@ -58,19 +58,19 @@
                         <option value="Malayalam" {{ $user->language == 'Malayalam' ? 'selected' : '' }}>Malayalam</option>
                     </select>
             </div>
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">pincode</label>
                 <input type="text" placeholder="Enter Project Duration" value="{{ $user->pincode }}" class="w-full border p-2 rounded " name="pincode">
-            </div>
+            </div> --}}
             
             <div>
                 <label class="block font-semibold">Adderss</label>
                 <input type="text" placeholder="Enter Client Name" value="{{ $user->address }}" class="w-full border p-2 rounded" name="address">
             </div>
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">Pancard </label>
                 <input type="text" placeholder="Enter Client ID" class="w-full border p-2 rounded" value="{{ $user->pancart }}" name="pancart">
-            </div>
+            </div> --}}
         </div>
 
         <h3 class="text-lg font-bold mt-6">More Details</h3>
@@ -81,7 +81,7 @@
             <th class="p-2">Resume</th>
             <th class="p-2">Gender</th>
             <th class="p-2">Date of Brth</th>
-            <th class="p-2">Age </th>
+            {{-- <th class="p-2">Age </th> --}}
         </tr>
     </thead>
     <tbody id="drawingDetails">
@@ -90,7 +90,7 @@
         {{-- {{dd($key)}} --}}
     <tr>
         <td class="p-2">
-            @if (json_decode($user->image)[$key])
+            @if (($user->image))
                 <img src="{{ asset('storage/' .json_decode($user->image)[$key]) }}" alt="Current Image" class="w-20 h-20 object-cover mb-2">
             @else
                 <span>No image uploaded</span>
@@ -109,7 +109,7 @@
         
         <td class="p-2"><input name="gender[]" type="text" value="{{ json_decode($user->gender)[$key] }}" class="w-full border p-2 rounded"></td>
         <td class="p-2"><input name="data_of_brth[]" type="date" value="{{ json_decode($user->data_of_brth)[$key] }}" class="w-full border p-2 rounded"></td>
-        <td class="p-2"><input name="age[]" type="text" value="{{ json_decode($user->age)[$key] }}" class="w-full border p-2 rounded"></td>
+        {{-- <td class="p-2"><input name="age[]" type="text" value="{{ json_decode($user->age)[$key] }}" class="w-full border p-2 rounded"></td> --}}
     </tr>
     @endforeach
     </tbody>
