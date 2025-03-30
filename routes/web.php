@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserformController;
 use App\Models\Userform;
@@ -30,6 +29,9 @@ Route::post('/userforms', [UserformController::class,'store']);
 Route::put('/userforms/{id}', [UserformController::class, 'show']);
 Route::delete('/userforms/{id}', [UserformController::class, 'destroy'])->name('userforms.destroy');
 
+Route::get('/admin', function () {
+    return view('auth.login');
+})->name('admin.login');
 
 Route::post('/userforms/{id}', [UserformController::class,'update']);
 
@@ -38,7 +40,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-});
+
 require __DIR__.'/auth.php';
