@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificationMail;
 use App\Models\User;
 use App\Models\Userform;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserformController extends Controller
 {
@@ -61,24 +63,37 @@ class UserformController extends Controller
             }
         }
 
-        Userform::create([
+        $user = Userform::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'contactno' => $validatedData['contactno'],
             'state' => $validatedData['state'],
-            // 'project' => $validatedData['project'],
             'language' => $validatedData['language'],
             'address' => $validatedData['address'],
-            // 'pancart' => $validatedData['pancart'],
             'image' => json_encode($imagePaths),  
             'resume' => json_encode($resumePaths),  
             'gender' => json_encode($validatedData['gender']),  
             'data_of_brth' => json_encode($validatedData['data_of_brth']), 
-            // 'age' => json_encode($validatedData['age']),  
         ]);
+    
 
-        return redirect()->route('dashboard')->with('success', 'User registered successfully.');
-    }
+          // Prepare data for email
+    $data = [
+        'name' => $user->name,
+        'email' => $user->email,
+        'contactno' => $user->contactno,
+        'state' => $user->state,
+        'language' => $user->language,
+        'address' => $user->address,
+        'gender' => $user->gender,
+        'data_of_brth' => $user->data_of_brth,
+    ];
+
+    // Send email
+    Mail::to($user->email)->send(new NotificationMail($data));
+
+    return redirect()->route('dashboard')->with('success', 'Admission submitted successfully! A confirmation email has been sent.');
+}
 
 
     public function update(Request $request, $id)
