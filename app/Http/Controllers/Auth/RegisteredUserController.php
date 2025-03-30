@@ -40,12 +40,15 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_admin' => $request->has('is_admin') ? true : false,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        if ($user->is_admin) {
+            return redirect()->route('admin.listuser');
+        }
+        return redirect()->route('dashboard');
     }
 }
