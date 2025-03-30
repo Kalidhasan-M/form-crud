@@ -88,7 +88,9 @@ class UserformController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'contactno' => 'required',
+
             // 'project' => 'required',
+
             'state' => 'required',
             'language' => 'required',
             'address' => 'nullable|string',

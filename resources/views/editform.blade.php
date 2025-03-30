@@ -13,6 +13,7 @@
         <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-md mt-10">
             <h2 class="text-xl font-bold mb-6"> USER DETAILS</h2>
             
+
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="block font-semibold">Name</label>
@@ -131,3 +132,4 @@
     </html>
     </x-app-layout>
     
+

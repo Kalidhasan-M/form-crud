@@ -16,18 +16,18 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('contactno');
-            $table->string('adhar')->unique();
+            // $table->string('adhar')->unique();
             $table->string('state');
-            $table->string('project');
+            // $table->string('project');
             $table->string('language');
-            $table->string('pincode'); 
+            // $table->string('pincode'); 
             $table->string('address');
-            $table->string('pancart')->unique();
+            // $table->string('pancart')->unique();
             $table->string('image')->nullable();
             $table->string('resume')->nullable(); 
             $table->string('gender');
             $table->string('data_of_brth'); 
-            $table->string('age');
+            // $table->string('age');
             $table->timestamps();
         });
     }
