@@ -53,11 +53,16 @@
                 </label>
                 <select class="w-full border p-2 rounded" name="language">
                     <option>-- Select --</option>
-                    <option value="tamil">-- Tamil --</option>
-                    <option value="English">-- English --</option>
-                    <option value="Hindi">-- Hindi --</option>
-                    <option  value="Malayalam">-- Malayalam --</option>
-
+                    <option value="M.Com">-- M.Com.--</option>
+                    <option value="B.Com">-- B.Com. (Computer Applications) --</option>
+                    <option value="B.A. Tamil">-- B.A. Tamil --</option>
+                    <option value="B.A. English">-- B.A. English --</option>
+                    <option value="B.Sc. Mathematics">-- B.Sc. Mathematics --</option>
+                    <option value="B.Sc. Physics">-- B.Sc. Physics --</option>
+                    <option value="B.Sc. Computer Science">-- B.Sc. Computer Science​ --</option>
+                    <option value="B.C.A">-- B.C.A. (Bachelor of Computer Applications) --</option>
+                    <option value="B.B.A.">-- B.B.A. (Bachelor of Business Administration)​ --</option>
+                    <option value="M.A. English">-- M.A. English --</option>
                 </select>
             </div>
             <div>
@@ -80,7 +85,7 @@
     <thead>
         <tr class="bg-gray-200">
             <th class="p-2">Image</th>
-            <th class="p-2">Resume</th>
+            <th class="p-2">Document</th>
             <th class="p-2">Gender</th>
         </tr>
     </thead>

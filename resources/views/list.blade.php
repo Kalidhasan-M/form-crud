@@ -55,7 +55,7 @@
     
                                 <td class="border px-4 py-2">
                                     @foreach (json_decode($user->resume) as $key => $value)
-                                        <a href="{{ asset('storage/' . $value) }}" target="_blank" class="text-blue-500 underline">View Resume</a>
+                                        <a href="{{ asset('storage/' . $value) }}" target="_blank" class="text-blue-500 underline">View Document</a>
                                     @endforeach
                                 </td>
             

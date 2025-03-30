@@ -88,7 +88,9 @@ class UserformController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'contactno' => 'required',
-            'project' => 'required',
+
+            // 'project' => 'required',
+
             'state' => 'required',
             'language' => 'required',
             'address' => 'nullable|string',
@@ -134,3 +136,4 @@ class UserformController extends Controller
     //     return redirect()->route('userforms.index')->with('success', 'User deleted successfully.');
     // }
 }
+
