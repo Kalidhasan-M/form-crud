@@ -26,15 +26,28 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // If email is changed, reset email verification
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        // Handle is_admin checkbox update
+        if ($request->has('is_admin')) {
+            $user->is_admin = (bool) $request->input('is_admin');
+        }
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        $user->save();
+
+        // Re-authenticate to update session with new is_admin value
+        Auth::login($user);
+
+        // Redirect admins to admin dashboard, users to profile page
+        return $user->is_admin 
+            ? Redirect::route('admin.dashboard')->with('status', 'profile-updated')
+            : Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**

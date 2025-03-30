@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserformController;
 use App\Models\Userform;
@@ -16,12 +17,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/listuser', function () {
+Route::get('/admin/listuser', function () {
     $userdata = Userform::all();
     return view('list',[
         'userdata' => $userdata
     ]);
-})->middleware(['auth', 'verified'])->name('listuser');
+})->middleware(['auth', 'verified'])->name('admin.listuser');
 
 Route::resource('userforms', UserformController::class);
 
@@ -37,5 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
 require __DIR__.'/auth.php';

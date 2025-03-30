@@ -30,7 +30,13 @@
             <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
-
+<!-- Admin Checkbox (Only for Testing) -->
+<div class="mt-4">
+            <label for="is_admin" class="inline-flex items-center">
+                <input type="checkbox" id="is_admin" name="is_admin" value="1" class="rounded text-indigo-600">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Register as Admin') }}</span>
+            </label>
+        </div>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
