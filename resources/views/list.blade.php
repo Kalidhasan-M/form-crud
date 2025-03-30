@@ -18,17 +18,17 @@
                             <th class="border px-4 py-2">Name</th>
                             <th class="border px-4 py-2">Email</th>
                             <th class="border px-4 py-2">Contact No</th>
-                            <th class="border px-4 py-2">Adhar No</th>
-                            <th class="border px-4 py-2">Project Name</th>
-                            <th class="border px-4 py-2">Language</th>
-                            <th class="border px-4 py-2">Pincode</th>
-                            <th class="border px-4 py-2">Pancard</th>
+                            {{-- <th class="border px-4 py-2">Adhar No</th> --}}
+                            <th class="border px-4 py-2">State </th>
+                            <th class="border px-4 py-2">courses</th>
+                            <th class="border px-8 py-2 ">DOB</th>
+                            {{-- <th class="border px-4 py-2">Pancard</th> --}}
                             <th class="border px-4 py-2">Address</th>
-                            <th class="border px-4 py-2">Image</th>
-                            <th class="border px-4 py-2">Resume</th>
+                            <th class="border px-4 py-2">Photo</th>
+                            <th class="border px-4 py-2">Document</th>
                             <th class="border px-4 py-2">Gender</th>
-                            <th class="border px-4 py-2">DOB</th>
-                            <th class="border px-4 py-2">Age</th>
+                            {{-- <th class="border px-4 py-2">DOB</th> --}}
+                            {{-- <th class="border px-4 py-2">Age</th> --}}
                             <th class="border px-4 py-2">Actions</th>
                         </tr>
                     </thead>
@@ -39,11 +39,13 @@
                       <td class="border px-4 py-2">{{ $user->name }}</td>
                     <td class="border px-4 py-2">{{ $user->email }}</td>
                     <td class="border px-4 py-2">{{ $user->contactno }}</td>
-                        <td class="border px-4 py-2">{{ $user->adhar }}</td>
+                        {{-- <td class="border px-4 py-2">{{ $user->adhar }}</td> --}}
                         <td class="border px-4 py-2">{{ $user->state }}</td>
                         <td class="border px-4 py-2">{{ $user->language }}</td>
-                     <td class="border px-4 py-2">{{ $user->pincode }}</td>
-                     <td class="border px-4 py-2">{{ $user->pancart }}</td>
+                        @foreach (json_decode($user->data_of_brth) as $key => $value)
+                     <td class="border px-4 py-2">{{ json_decode($user->data_of_brth)[0] }}</td>
+                     @endforeach
+                     {{-- <td class="border px-4 py-2">{{ $user->pancart }}</td> --}}
                     <td class="border px-4 py-2">{{ $user->address }}</td>
                     <td class="border px-4 py-2">
                                     @foreach (json_decode($user->image) as $key => $value)
@@ -53,13 +55,13 @@
     
                                 <td class="border px-4 py-2">
                                     @foreach (json_decode($user->resume) as $key => $value)
-                                        <a href="{{ asset('storage/' . $value) }}" target="_blank" class="text-blue-500 underline">View Resume</a>
+                                        <a href="{{ asset('storage/' . $value) }}" target="_blank" class="text-blue-500 underline">View Document</a>
                                     @endforeach
                                 </td>
             
                                         <td class="border px-4 py-2">{{ json_decode($user->gender)[0] }}</td>
-                                        <td class="border px-4 py-2">{{ json_decode($user->data_of_brth)[0] }}</td>
-                                        <td class="border px-4 py-2">{{ json_decode($user->age)[0] }}</td>
+                                        {{-- <td class="border px-4 py-2">{{ json_decode($user->data_of_brth)[0] }}</td> --}}
+                                        {{-- <td class="border px-4 py-2">{{ json_decode($user->age)[0] }}</td> --}}
     
                                 <td class="border px-4 py-2 flex space-x-2">
                                     <a href="{{ url('/edit-form', $user->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded">Edit</a>

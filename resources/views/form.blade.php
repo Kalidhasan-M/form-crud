@@ -27,15 +27,15 @@
                 <input type="text" placeholder="Enter Contact Number" class="w-full border p-2 rounded "  name="contactno">
             </div>
             
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">Adhar No</label>
                 <input type="text" placeholder="Enter Tender No" class="w-full border p-2 rounded "  name="adhar">
-            </div>
+            </div> --}}
             
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">Project Name</label>
                 <input type="text" placeholder="Enter Project Name" class="w-full border p-2 rounded "  name="project">
-            </div>
+            </div> --}}
             <div>
                 <label class="block font-semibold">State</label>
                 <select class="w-full border p-2 rounded" name="state">
@@ -49,29 +49,35 @@
             </div>
             
             <div>
-                <label class="block font-semibold">Language</label>
+                <label class="block font-semibold">Please select the courses you would like to attend
+                </label>
                 <select class="w-full border p-2 rounded" name="language">
                     <option>-- Select --</option>
-                    <option value="tamil">-- Tamil --</option>
-                    <option value="English">-- English --</option>
-                    <option value="Hindi">-- Hindi --</option>
-                    <option  value="Malayalam">-- Malayalam --</option>
-
+                    <option value="M.Com">-- M.Com.--</option>
+                    <option value="B.Com">-- B.Com. (Computer Applications) --</option>
+                    <option value="B.A. Tamil">-- B.A. Tamil --</option>
+                    <option value="B.A. English">-- B.A. English --</option>
+                    <option value="B.Sc. Mathematics">-- B.Sc. Mathematics --</option>
+                    <option value="B.Sc. Physics">-- B.Sc. Physics --</option>
+                    <option value="B.Sc. Computer Science">-- B.Sc. Computer Science​ --</option>
+                    <option value="B.C.A">-- B.C.A. (Bachelor of Computer Applications) --</option>
+                    <option value="B.B.A.">-- B.B.A. (Bachelor of Business Administration)​ --</option>
+                    <option value="M.A. English">-- M.A. English --</option>
                 </select>
             </div>
             <div>
-                <label class="block font-semibold">pincode</label>
-                <input type="text" placeholder="Enter Project Duration" class="w-full border p-2 rounded " name="pincode">
+                <label class="block font-semibold">Date of Birth</label>
+                <input type="date" placeholder="Enter Project Duration" class="w-full border p-2 rounded " name="data_of_brth[]">
             </div>
             
             <div>
                 <label class="block font-semibold">Adderss</label>
                 <input type="text" placeholder="Enter Client Name" class="w-full border p-2 rounded" name="address">
             </div>
-            <div>
+            {{-- <div>
                 <label class="block font-semibold">Pancard </label>
                 <input type="text" placeholder="Enter Client ID" class="w-full border p-2 rounded" name="pancart">
-            </div>
+            </div> --}}
         </div>
 
         <h3 class="text-lg font-bold mt-6">More Details</h3>
@@ -79,11 +85,8 @@
     <thead>
         <tr class="bg-gray-200">
             <th class="p-2">Image</th>
-            <th class="p-2">Resume</th>
+            <th class="p-2">Document</th>
             <th class="p-2">Gender</th>
-            <th class="p-2">Date of Brth</th>
-            <th class="p-2">Age </th>
-            <th class="p-2">Action</th>
         </tr>
     </thead>
     <tbody id="drawingDetails">
@@ -91,15 +94,11 @@
             <td class="p-2"><input name="image[]" type="file" class="w-full border p-2 rounded"></td>
             <td class="p-2"><input name="resume[]" type="file" placeholder="Enter Diagram" class="w-full border p-2 rounded"></td>
              <td class="p-2"><input name="gender[]" type="text" placeholder="Enter gender" class="w-full border p-2 rounded"></td>
-            <td class="p-2"><input name="data_of_brth[]" type="date" class="w-full border p-2 rounded"></td>
-            <td class="p-2"><input name="age[]" type="text" placeholder=" Age " class="w-full border p-2 rounded"></td>
-            <td class="p-2"><button onclick="removeRow(this)" class="bg-red-500 text-white px-3 py-1 rounded">Remove</button></td>
         </tr>
     </tbody>
 </table>
 
 <form id="myForm" onsubmit="handleSubmit(event)">
-    <button type="button" onclick="addRow()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">+ Add More</button>
 
     <table id="drawingDetails" class="mt-4 w-full">
        
@@ -107,11 +106,11 @@
 
     <div class="flex justify-end gap-4 mt-6">
         <button type="button" onclick="resetForm()" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Add</button>
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Sumbit</button>
     </div>
 </form>
 
-<script>
+{{-- <script>
     
     function addRow() {
         let tableBody = document.getElementById("drawingDetails");
@@ -148,7 +147,7 @@
         console.log('Images:', images);
 
     }
-</script>
+</script> --}}
 
 </body>
 </html>
