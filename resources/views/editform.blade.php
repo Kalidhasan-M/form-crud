@@ -8,6 +8,9 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="bg-gray-100 p-6">
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-3">{{ session('success') }}</div>
+        @endif
         <form action="{{ url('/userforms/'.$user->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-md mt-10">
