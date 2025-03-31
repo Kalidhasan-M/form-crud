@@ -116,8 +116,6 @@ class UserformController extends Controller
             }
             $user->image = json_encode($images);
         }
-        
-        // Handle resume upload
         if ($request->hasFile('resume')) {
             $resumes = [];
             foreach ($request->file('resume') as $resume) {
@@ -125,14 +123,9 @@ class UserformController extends Controller
             }
             $user->resume = json_encode($resumes);
         }
-        
-        // Handle JSON fields
         $user->gender = json_encode($request->gender);
         $user->data_of_brth = json_encode($request->data_of_brth);
-
-        // Save the updated record
         $user->save();
-
         return redirect()->back()->with('success', 'User updated successfully');
     }
     public function destroy($id)
