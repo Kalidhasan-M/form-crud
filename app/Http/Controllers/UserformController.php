@@ -98,40 +98,42 @@ class UserformController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'contactno' => 'required',
-
-            // 'project' => 'required',
-
-            'state' => 'required',
-            'language' => 'required',
-            'address' => 'nullable|string',
-            // 'pancart' => 'nullable|string',
-            'data_of_brth' => 'nullable|date',
-            // 'age' => 'nullable|integer',
-            'image' => 'nullable|image|max:2048',
-            'resume' => 'nullable|mimes:pdf,doc,docx|max:2048',
-            'gender' => 'nullable|string'
-        ]);
-
         $user = Userform::findOrFail($id);
-
+        
+        // Update basic fields
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->contactno = $request->contactno;
+        $user->state = $request->state;
+        $user->language = $request->language;
+        $user->address = $request->address;
+        
+        // Handle image upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads', 'public');
-            $user->image = $imagePath;
+            $images = [];
+            foreach ($request->file('image') as $image) {
+                $images[] = $image->store('images', 'public');
+            }
+            $user->image = json_encode($images);
         }
-
+        
+        // Handle resume upload
         if ($request->hasFile('resume')) {
-            $resumePath = $request->file('resume')->store('uploads', 'public');
-            $user->resume = $resumePath;
+            $resumes = [];
+            foreach ($request->file('resume') as $resume) {
+                $resumes[] = $resume->store('resumes', 'public');
+            }
+            $user->resume = json_encode($resumes);
         }
+        
+        // Handle JSON fields
+        $user->gender = json_encode($request->gender);
+        $user->data_of_brth = json_encode($request->data_of_brth);
 
-        $user->update($request->except(['_token', '_method', 'image', 'resume']));
+        // Save the updated record
+        $user->save();
 
-        return redirect()->route('userforms.index')->with('success', 'User updated successfully!');
+        return redirect()->back()->with('success', 'User updated successfully');
     }
     public function destroy($id)
     {
